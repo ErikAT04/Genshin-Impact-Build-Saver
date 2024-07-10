@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.dev.genshinbuildsaver.MainApp">
    <children>
       <ImageView fitHeight="104.0" fitWidth="559.0" layoutX="22.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
@@ -37,12 +36,12 @@
             <Font name="HYWenHei 85W" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="unameTField" layoutX="192.0" layoutY="184.0">
+      <TextField fx:id="unameTField" layoutX="192.0" layoutY="184.0" onKeyTyped="#onUnameType">
          <font>
             <Font name="HYWenHei 85W" size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="pwdField" layoutX="192.0" layoutY="278.0">
+      <PasswordField fx:id="pwdField" layoutX="192.0" layoutY="278.0" onKeyTyped="#onPasswdType">
          <font>
             <Font name="HYWenHei 85W" size="16.0" />
          </font>

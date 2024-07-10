@@ -51,4 +51,29 @@ public class CrownDAO {
 
         return rowsAffected;
     }
+    public static int updateCrown(Crown crown){
+        int rowsAffected = 0;
+
+        try(Connection con = DataBaseManager.getConnection()){
+            String sql = "UPDATE CROWN SET NAME = ?, LVL = ?, STATMAIN = ?, LVLMAIN = ?, STAT1 = ?, LVL1 = ?, STAT2 = ?, LVL2 = ?, STAT3 = ?, LVL3 = ?, STAT4 = ?, LVL4 = ? WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, crown.getName());
+            statement.setInt(2, crown.getLvl());
+            statement.setString(3, crown.getMainStat());
+            statement.setDouble(4, crown.getLvlMainStat());
+            statement.setString(5, crown.getSubStat1());
+            statement.setDouble(6, crown.getLvlSubStat1());
+            statement.setString(7, crown.getSubStat2());
+            statement.setDouble(8, crown.getLvlSubStat2());
+            statement.setString(9, crown.getSubStat3());
+            statement.setDouble(10, crown.getLvlSubStat3());
+            statement.setString(11, crown.getSubStat4());
+            statement.setDouble(12, crown.getLvlSubStat4());
+            statement.setInt(13, crown.getId());
+            rowsAffected = statement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return rowsAffected;
+    }
 }

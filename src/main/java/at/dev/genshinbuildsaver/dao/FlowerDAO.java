@@ -1,5 +1,6 @@
 package at.dev.genshinbuildsaver.dao;
 
+import at.dev.genshinbuildsaver.Objects.Crown;
 import at.dev.genshinbuildsaver.Objects.Feather;
 import at.dev.genshinbuildsaver.Objects.Flower;
 
@@ -46,6 +47,31 @@ public class FlowerDAO {
             System.out.println(e.getMessage());
         }
 
+        return rowsAffected;
+    }
+    public static int updateFlower(Flower flower){
+        int rowsAffected = 0;
+
+        try(Connection con = DataBaseManager.getConnection()){
+            String sql = "UPDATE FLOWER SET NAME = ?, LVL = ?, STATMAIN = ?, LVLMAIN = ?, STAT1 = ?, LVL1 = ?, STAT2 = ?, LVL2 = ?, STAT3 = ?, LVL3 = ?, STAT4 = ?, LVL4 = ? WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, flower.getName());
+            statement.setInt(2, flower.getLvl());
+            statement.setString(3, flower.getMainStat());
+            statement.setDouble(4, flower.getLvlMainStat());
+            statement.setString(5, flower.getSubStat1());
+            statement.setDouble(6, flower.getLvlSubStat1());
+            statement.setString(7, flower.getSubStat2());
+            statement.setDouble(8, flower.getLvlSubStat2());
+            statement.setString(9, flower.getSubStat3());
+            statement.setDouble(10, flower.getLvlSubStat3());
+            statement.setString(11, flower.getSubStat4());
+            statement.setDouble(12, flower.getLvlSubStat4());
+            statement.setInt(13, flower.getId());
+            rowsAffected = statement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
         return rowsAffected;
     }
 }

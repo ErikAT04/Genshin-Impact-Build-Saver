@@ -40,6 +40,7 @@ public class UserDAO {
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, uname);
             statement.setString(2, passwd);
+            rows = statement.executeUpdate();
         }catch (SQLException e){
             System.out.println(e.getMessage());
         };

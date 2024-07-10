@@ -1,5 +1,6 @@
 package at.dev.genshinbuildsaver.dao;
 
+import at.dev.genshinbuildsaver.Objects.Crown;
 import at.dev.genshinbuildsaver.Objects.Feather;
 import at.dev.genshinbuildsaver.Objects.Goblet;
 
@@ -44,6 +45,31 @@ public class GobletDAO {
             String sql = "INSERT INTO GOBLET(G_CHARACTER, NAME, LVL, STATMAIN, LVLMAIN, STAT1, LVL1, STAT2, LVL2, STAT3, LVL3, STAT4, LVL4) VALUES (?, '(NONE)', 0, '(NONE)', 0, '(NONE)', 0, '(NONE)', 0, '(NONE)', 0, '(NONE)', 0)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, idChar);
+            rowsAffected = statement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return rowsAffected;
+    }
+    public static int updateGoblet(Goblet goblet){
+        int rowsAffected = 0;
+
+        try(Connection con = DataBaseManager.getConnection()){
+            String sql = "UPDATE GOBLET SET NAME = ?, LVL = ?, STATMAIN = ?, LVLMAIN = ?, STAT1 = ?, LVL1 = ?, STAT2 = ?, LVL2 = ?, STAT3 = ?, LVL3 = ?, STAT4 = ?, LVL4 = ? WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, goblet.getName());
+            statement.setInt(2, goblet.getLvl());
+            statement.setString(3, goblet.getMainStat());
+            statement.setDouble(4, goblet.getLvlMainStat());
+            statement.setString(5, goblet.getSubStat1());
+            statement.setDouble(6, goblet.getLvlSubStat1());
+            statement.setString(7, goblet.getSubStat2());
+            statement.setDouble(8, goblet.getLvlSubStat2());
+            statement.setString(9, goblet.getSubStat3());
+            statement.setDouble(10, goblet.getLvlSubStat3());
+            statement.setString(11, goblet.getSubStat4());
+            statement.setDouble(12, goblet.getLvlSubStat4());
+            statement.setInt(13, goblet.getId());
             rowsAffected = statement.executeUpdate();
         }catch (SQLException e){
             System.out.println(e.getMessage());

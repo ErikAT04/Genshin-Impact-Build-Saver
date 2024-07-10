@@ -1,5 +1,6 @@
 package at.dev.genshinbuildsaver.dao;
 
+import at.dev.genshinbuildsaver.Objects.Crown;
 import at.dev.genshinbuildsaver.Objects.Feather;
 
 import java.sql.Connection;
@@ -48,6 +49,31 @@ public class FeatherDAO {
             System.out.println(e.getMessage());
         }
 
+        return rowsAffected;
+    }
+    public static int updateFeather(Feather feather){
+        int rowsAffected = 0;
+
+        try(Connection con = DataBaseManager.getConnection()){
+            String sql = "UPDATE FEATHER SET NAME = ?, LVL = ?, STATMAIN = ?, LVLMAIN = ?, STAT1 = ?, LVL1 = ?, STAT2 = ?, LVL2 = ?, STAT3 = ?, LVL3 = ?, STAT4 = ?, LVL4 = ? WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, feather.getName());
+            statement.setInt(2, feather.getLvl());
+            statement.setString(3, feather.getMainStat());
+            statement.setDouble(4, feather.getLvlMainStat());
+            statement.setString(5, feather.getSubStat1());
+            statement.setDouble(6, feather.getLvlSubStat1());
+            statement.setString(7, feather.getSubStat2());
+            statement.setDouble(8, feather.getLvlSubStat2());
+            statement.setString(9, feather.getSubStat3());
+            statement.setDouble(10, feather.getLvlSubStat3());
+            statement.setString(11, feather.getSubStat4());
+            statement.setDouble(12, feather.getLvlSubStat4());
+            statement.setInt(13, feather.getId());
+            rowsAffected = statement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
         return rowsAffected;
     }
 }
