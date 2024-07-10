@@ -1,4 +1,7 @@
 package at.dev.genshinbuildsaver.Objects;
 
-public class Sands {
+public class Sands extends Artifact{
+    public Sands(){
+
+    }
 }

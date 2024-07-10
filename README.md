@@ -15,7 +15,7 @@ Okay, my idea on this project is covering these points:
 These are a bit apart from the others bc of their complexity, but it would be cool to try:
 <ul>
   <li>Calculate character's stats depending on what have everyone put on the app</li>
-  <li>Make recommendations for each character (Example: "Your Qiqi should use: 1.Ocean-Hued Clam 2.Maven Beloved</li>
+  <li>Make recommendations for each character (Example: "Your Qiqi should use: 1.Ocean-Hued Clam 2.Maven Beloved)</li>
   <li>Show info about artifacts in other section of the app</li>
   <li>(IMPOSSIBLE) Interactive map about where are the different domains</li>
 </ul>
